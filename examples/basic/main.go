@@ -113,14 +113,4 @@ func main() {
 	}
 }
 
-// deviceStateToString converts a device state to a string
-func deviceStateToString(state int32) string {
-	switch state {
-	case 0:
-		return "Unavailable"
-	case 1:
-		return "Available"
-	default:
-		return "Unknown"
-	}
-}
+

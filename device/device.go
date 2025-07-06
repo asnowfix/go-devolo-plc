@@ -3,17 +3,13 @@ package device
 
 import (
 	"context"
-	"crypto/sha256"
-	"encoding/hex"
 	"fmt"
 	"log"
-	"net"
 	"strings"
 	"time"
 
 	"github.com/asnowfix/go-devolo-plc/deviceapi"
 	"github.com/asnowfix/go-devolo-plc/plcnetapi"
-	"github.com/asnowfix/go-devolo-plc/zeroconf"
 	"github.com/grandcat/zeroconf"
 )
 
@@ -28,8 +24,24 @@ const (
 	MDNSTimeout = 300
 )
 
+// getPathProperty gets the path property from the properties map
+// checking both "Path" and "path" keys
+func getPathProperty(properties map[string]string) string {
+	if path, ok := properties["Path"]; ok && path != "" {
+		return path
+	}
+	return properties["path"]
+}
+
 // DevicesWithoutPlcNet is a list of device MT numbers that don't support the PLC network API
 var DevicesWithoutPlcNet = []string{"2600", "2601"}
+
+// ServiceInfo holds information about a discovered service
+type ServiceInfo struct {
+	Port       int
+	Properties map[string]string
+	Hostname   string
+}
 
 // Device represents a devolo PLC device
 type Device struct {
@@ -45,7 +57,7 @@ type Device struct {
 
 	connected bool
 	password  string
-	info      map[string]*zeroconf.ServiceInfo
+	info      map[string]*ServiceInfo
 	logger    *log.Logger
 }
 
@@ -55,12 +67,12 @@ func New(ip string) (*Device, error) {
 		IP:           ip,
 		MTNumber:     "0",
 		SerialNumber: "0",
-		info:         make(map[string]*zeroconf.ServiceInfo),
+		info:         make(map[string]*ServiceInfo),
 		logger:       log.New(log.Writer(), "device: ", log.LstdFlags),
 	}
 
-	d.info[ServiceTypeDeviceAPI] = &zeroconf.ServiceInfo{}
-	d.info[ServiceTypePlcNetAPI] = &zeroconf.ServiceInfo{}
+	d.info[ServiceTypeDeviceAPI] = &ServiceInfo{Properties: make(map[string]string)}
+	d.info[ServiceTypePlcNetAPI] = &ServiceInfo{Properties: make(map[string]string)}
 
 	return d, nil
 }
@@ -183,7 +195,7 @@ func (d *Device) getDeviceInfo() error {
 	d.DeviceAPI = deviceapi.New(
 		d.IP,
 		d.info[ServiceTypeDeviceAPI].Port,
-		d.info[ServiceTypeDeviceAPI].Properties["Path"] || d.info[ServiceTypeDeviceAPI].Properties["path"],
+		getPathProperty(d.info[ServiceTypeDeviceAPI].Properties),
 		d.info[ServiceTypeDeviceAPI].Properties["Version"],
 		httpClient,
 	)
@@ -305,15 +317,10 @@ func (d *Device) processServiceEntry(entry *zeroconf.ServiceEntry) {
 		return
 	}
 
-	info := &zeroconf.ServiceInfo{
+	info := &ServiceInfo{
 		Hostname:   entry.HostName,
 		Port:       entry.Port,
 		Properties: make(map[string]string),
-	}
-
-	// Set IP address
-	if len(entry.AddrIPv4) > 0 {
-		info.Address = entry.AddrIPv4[0]
 	}
 
 	// Parse TXT records
@@ -352,8 +359,4 @@ func (d *Device) isDeviceWithoutPlcNet() bool {
 	return false
 }
 
-// hashPassword returns the SHA-256 hash of the password
-func hashPassword(password string) string {
-	hash := sha256.Sum256([]byte(password))
-	return hex.EncodeToString(hash[:])
-}
+
