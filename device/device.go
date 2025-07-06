@@ -358,5 +358,3 @@ func (d *Device) isDeviceWithoutPlcNet() bool {
 	}
 	return false
 }
-
-
