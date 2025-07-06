@@ -2,7 +2,7 @@ module github.com/asnowfix/go-devolo-plc
 
 go 1.22
 
-toolchain go1.24.3
+toolchain go1.24.4
 
 require (
 	github.com/grandcat/zeroconf v1.0.0

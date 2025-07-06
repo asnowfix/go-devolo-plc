@@ -35,3 +35,6 @@ go.work.sum
 *.pb.go
 *.pb.gw.go
 *.pb.validate.go
+
+# Security scan results
+security-results.txt
