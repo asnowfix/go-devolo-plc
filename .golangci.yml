@@ -31,5 +31,3 @@ issues:
   # Show all issues
   max-issues-per-linter: 0
   max-same-issues: 0
-  # Use colored output
-  include-use-line-number: true
