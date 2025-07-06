@@ -49,15 +49,15 @@ tools:
 	$(GOCMD) install golang.org/x/vuln/cmd/govulncheck@latest
 	$(GOCMD) install google.golang.org/protobuf/cmd/protoc-gen-go@latest
 	$(GOCMD) install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
-	curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(GOBIN) v1.56.2
+	curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(GOBIN) v1.47.3
 
 # Generate protobuf files
 .PHONY: proto
-proto:
+proto: tools
 	@echo "Generating protobuf files..."
-	@for proto_file in $(PROTO_FILES); do \
+	for proto_file in $(PROTO_FILES); do \
 		echo "Processing $$proto_file"; \
-		$(PROTOC) $(PROTO_GO_OUT) $(PROTO_GRPC_OUT) $$proto_file; \
+		PATH="$(GOBIN):$$PATH" $(PROTOC) $(PROTO_GO_OUT) $(PROTO_GRPC_OUT) $$proto_file; \
 	done
 
 # Format code
