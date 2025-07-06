@@ -18,9 +18,9 @@ type WifiConnectedStationsGet struct {
 
 // ConnectedStationInfo represents information about a connected WiFi station
 type ConnectedStationInfo struct {
-	MacAddress    string
+	MacAddress     string
 	SignalStrength int32
-	Speed         int32
+	Speed          int32
 }
 
 // WifiGuestAccessGet represents the WiFi guest access get response
@@ -49,11 +49,11 @@ type WifiNeighborAPsGet struct {
 
 // NeighborAPInfo represents information about a neighboring WiFi access point
 type NeighborAPInfo struct {
-	SSID          string
-	BSSID         string
+	SSID           string
+	BSSID          string
 	SignalStrength int32
-	Channel       int32
-	Encryption    int32
+	Channel        int32
+	Encryption     int32
 }
 
 // WifiRepeatedAPsGet represents the WiFi repeated access points get response
@@ -63,11 +63,11 @@ type WifiRepeatedAPsGet struct {
 
 // RepeatedAPInfo represents information about a repeated WiFi access point
 type RepeatedAPInfo struct {
-	SSID          string
-	BSSID         string
+	SSID           string
+	BSSID          string
 	SignalStrength int32
-	Channel       int32
-	Encryption    int32
+	Channel        int32
+	Encryption     int32
 }
 
 // WifiRepeaterWpsClonePbcStart represents the WiFi repeater WPS clone PBC start response

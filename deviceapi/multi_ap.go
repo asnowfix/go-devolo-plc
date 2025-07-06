@@ -8,7 +8,7 @@ type WifiMultiApGetResponse struct {
 
 // Role constants for WifiMultiApGetResponse
 const (
-	WifiMultiApGetResponse_ROLE_NONE     int32 = 0
-	WifiMultiApGetResponse_ROLE_AGENT    int32 = 1
+	WifiMultiApGetResponse_ROLE_NONE       int32 = 0
+	WifiMultiApGetResponse_ROLE_AGENT      int32 = 1
 	WifiMultiApGetResponse_ROLE_CONTROLLER int32 = 2
 )

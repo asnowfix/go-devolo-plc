@@ -20,10 +20,10 @@ import (
 const (
 	// ServiceTypeDeviceAPI is the mDNS service type for the device API
 	ServiceTypeDeviceAPI = "_dvl-deviceapi._tcp"
-	
+
 	// ServiceTypePlcNetAPI is the mDNS service type for the PLC network API
 	ServiceTypePlcNetAPI = "_dvl-plcnetapi._tcp"
-	
+
 	// MDNSTimeout is the timeout for mDNS discovery in milliseconds
 	MDNSTimeout = 300
 )
@@ -52,16 +52,16 @@ type Device struct {
 // New creates a new Device instance
 func New(ip string) (*Device, error) {
 	d := &Device{
-		IP:        ip,
-		MTNumber:  "0",
+		IP:           ip,
+		MTNumber:     "0",
 		SerialNumber: "0",
-		info:      make(map[string]*zeroconf.ServiceInfo),
-		logger:    log.New(log.Writer(), "device: ", log.LstdFlags),
+		info:         make(map[string]*zeroconf.ServiceInfo),
+		logger:       log.New(log.Writer(), "device: ", log.LstdFlags),
 	}
-	
+
 	d.info[ServiceTypeDeviceAPI] = &zeroconf.ServiceInfo{}
 	d.info[ServiceTypePlcNetAPI] = &zeroconf.ServiceInfo{}
-	
+
 	return d, nil
 }
 
@@ -104,11 +104,11 @@ func (d *Device) Disconnect() error {
 	if d.DeviceAPI != nil {
 		d.DeviceAPI.Close()
 	}
-	
+
 	if d.PlcNetAPI != nil {
 		d.PlcNetAPI.Close()
 	}
-	
+
 	d.connected = false
 	return nil
 }
@@ -118,19 +118,19 @@ func (d *Device) FirmwareDate() (time.Time, error) {
 	if !d.connected {
 		return time.Time{}, fmt.Errorf("device not connected")
 	}
-	
+
 	dateStr := d.info[ServiceTypeDeviceAPI].Properties["FirmwareDate"]
 	if dateStr == "" {
 		return time.Time{}, fmt.Errorf("firmware date not available")
 	}
-	
+
 	// Parse the date string (format: YYYY-MM-DD)
 	if len(dateStr) >= 10 {
 		dateStr = dateStr[:10]
 	} else {
 		dateStr = "1970-01-01"
 	}
-	
+
 	return time.Parse("2006-01-02", dateStr)
 }
 
@@ -139,7 +139,7 @@ func (d *Device) FirmwareVersion() string {
 	if !d.connected {
 		return ""
 	}
-	
+
 	return d.info[ServiceTypeDeviceAPI].Properties["FirmwareVersion"]
 }
 
@@ -148,7 +148,7 @@ func (d *Device) Hostname() string {
 	if !d.connected {
 		return ""
 	}
-	
+
 	return d.info[ServiceTypeDeviceAPI].Hostname
 }
 
@@ -160,11 +160,11 @@ func (d *Device) Password() string {
 // SetPassword changes the currently set device password
 func (d *Device) SetPassword(password string) {
 	d.password = password
-	
+
 	if d.DeviceAPI != nil {
 		d.DeviceAPI.SetPassword(password)
 	}
-	
+
 	if d.PlcNetAPI != nil {
 		d.PlcNetAPI.SetPassword(password)
 	}
@@ -178,7 +178,7 @@ func (d *Device) getDeviceInfo() error {
 
 	// Create HTTP client for the device API
 	httpClient := deviceapi.NewHTTPClient()
-	
+
 	// Create device API client
 	d.DeviceAPI = deviceapi.New(
 		d.IP,
@@ -187,12 +187,12 @@ func (d *Device) getDeviceInfo() error {
 		d.info[ServiceTypeDeviceAPI].Properties["Version"],
 		httpClient,
 	)
-	
+
 	// Set password if available
 	if d.password != "" {
 		d.DeviceAPI.SetPassword(d.password)
 	}
-	
+
 	// Parse features
 	features := d.info[ServiceTypeDeviceAPI].Properties["Features"]
 	if features == "" {
@@ -201,7 +201,7 @@ func (d *Device) getDeviceInfo() error {
 	} else {
 		d.DeviceAPI.SetFeatures(strings.Split(features, ","))
 	}
-	
+
 	return nil
 }
 
@@ -210,10 +210,10 @@ func (d *Device) getPlcNetInfo() error {
 	if len(d.info[ServiceTypePlcNetAPI].Properties) == 0 {
 		return fmt.Errorf("no PLC network API information available")
 	}
-	
+
 	// Create HTTP client for the PLC network API
 	httpClient := plcnetapi.NewHTTPClient()
-	
+
 	// Create PLC network API client
 	d.PlcNetAPI = plcnetapi.New(
 		d.IP,
@@ -223,43 +223,43 @@ func (d *Device) getPlcNetInfo() error {
 		d.info[ServiceTypePlcNetAPI].Properties["PlcMacAddress"],
 		httpClient,
 	)
-	
+
 	// Set password if available
 	if d.password != "" {
 		d.PlcNetAPI.SetPassword(d.password)
 	}
-	
+
 	// Set device properties from PLC network API info
 	d.MAC = d.info[ServiceTypePlcNetAPI].Properties["PlcMacAddress"]
 	d.Technology = d.info[ServiceTypePlcNetAPI].Properties["PlcTechnology"]
-	
+
 	return nil
 }
 
 // getZeroconfInfo browses for the desired mDNS service types and queries them
 func (d *Device) getZeroconfInfo(ctx context.Context) error {
 	serviceTypes := []string{ServiceTypeDeviceAPI, ServiceTypePlcNetAPI}
-	
+
 	resolver, err := zeroconf.NewResolver(nil)
 	if err != nil {
 		return fmt.Errorf("failed to create resolver: %w", err)
 	}
-	
+
 	entries := make(chan *zeroconf.ServiceEntry)
-	
+
 	// Start listening for responses
 	if err := resolver.Browse(ctx, serviceTypes[0], "local.", entries); err != nil {
 		return fmt.Errorf("failed to browse: %w", err)
 	}
-	
+
 	if err := resolver.Browse(ctx, serviceTypes[1], "local.", entries); err != nil {
 		return fmt.Errorf("failed to browse: %w", err)
 	}
-	
+
 	// Process responses
 	timer := time.NewTimer(time.Duration(MDNSTimeout) * time.Millisecond)
 	defer timer.Stop()
-	
+
 	for {
 		select {
 		case entry := <-entries:
@@ -269,19 +269,19 @@ func (d *Device) getZeroconfInfo(ctx context.Context) error {
 					d.processServiceEntry(entry)
 				}
 			}
-			
+
 			// Check if we have all the information we need
 			if d.hasRequiredInfo() {
 				return nil
 			}
-			
+
 		case <-timer.C:
 			// Timeout reached
 			if d.hasRequiredInfo() {
 				return nil
 			}
 			return fmt.Errorf("timeout waiting for mDNS responses")
-			
+
 		case <-ctx.Done():
 			return ctx.Err()
 		}
@@ -304,18 +304,18 @@ func (d *Device) processServiceEntry(entry *zeroconf.ServiceEntry) {
 	} else {
 		return
 	}
-	
+
 	info := &zeroconf.ServiceInfo{
 		Hostname:   entry.HostName,
 		Port:       entry.Port,
 		Properties: make(map[string]string),
 	}
-	
+
 	// Set IP address
 	if len(entry.AddrIPv4) > 0 {
 		info.Address = entry.AddrIPv4[0]
 	}
-	
+
 	// Parse TXT records
 	for _, txt := range entry.Text {
 		parts := strings.SplitN(txt, "=", 2)
@@ -323,7 +323,7 @@ func (d *Device) processServiceEntry(entry *zeroconf.ServiceEntry) {
 			info.Properties[parts[0]] = parts[1]
 		}
 	}
-	
+
 	d.info[serviceType] = info
 }
 
@@ -333,12 +333,12 @@ func (d *Device) hasRequiredInfo() bool {
 	if len(d.info[ServiceTypeDeviceAPI].Properties) == 0 {
 		return false
 	}
-	
+
 	// Check if we need PLC network API info
 	if d.isDeviceWithoutPlcNet() {
 		return true
 	}
-	
+
 	return len(d.info[ServiceTypePlcNetAPI].Properties) > 0
 }
 

@@ -22,7 +22,7 @@ func main() {
 	checkUpdate := flag.Bool("check-update", false, "Check if a firmware update is available")
 	pairDevice := flag.Bool("pair", false, "Start device pairing")
 	setName := flag.String("set-name", "", "Set device name")
-	
+
 	flag.Parse()
 
 	// Check if IP address is provided
@@ -110,12 +110,12 @@ func main() {
 			fmt.Printf("Failed to check for updates: %v\n", err)
 		} else if available {
 			fmt.Printf("Firmware update available: %s\n", version)
-			
+
 			// Ask if user wants to update
 			fmt.Print("Do you want to install this update? (y/n): ")
 			var answer string
 			fmt.Scanln(&answer)
-			
+
 			if answer == "y" || answer == "Y" {
 				fmt.Println("Starting firmware update...")
 				success, err := dev.DeviceAPI.StartFirmwareUpdate(ctx)

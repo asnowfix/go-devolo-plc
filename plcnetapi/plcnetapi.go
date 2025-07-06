@@ -13,7 +13,7 @@ import (
 	"time"
 
 	"google.golang.org/protobuf/proto"
-	
+
 	pb "github.com/asnowfix/go-devolo-plc/proto"
 )
 
