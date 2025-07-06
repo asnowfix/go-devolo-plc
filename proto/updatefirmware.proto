@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package device.api;
+
+option java_package = "device";
+option java_outer_classname = "update";
+option go_package = "github.com/asnowfix/go-devolo-plc/proto";
+
+// Update Firmware Check message
+message UpdateFirmwareCheck {
+  enum Result {
+    UPDATE_AVAILABLE = 0;
+    UPDATE_NOT_AVAILABLE = 1;
+    UNKNOWN_ERROR = 255;
+  }
+  Result result = 1;
+  string available_version = 2;
+}
+
+// Update Firmware Start message
+message UpdateFirmwareStart {
+  enum Result {
+    UPDATE_STARTED = 0;
+    UPDATE_NOT_AVAILABLE = 1;
+    UNKNOWN_ERROR = 255;
+  }
+  Result result = 1;
+}

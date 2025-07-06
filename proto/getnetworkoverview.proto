@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+package plcnet.api;
+
+option java_package = "plcnet";
+option java_outer_classname = "net";
+option go_package = "github.com/asnowfix/go-devolo-plc/plcnetapi/proto";
+
+// GetNetworkOverview represents the network overview response
+message GetNetworkOverview {
+  LogicalNetwork network = 1;
+
+  // Device represents a device in the PLC network
+  message Device {
+    string product_name = 1;
+    string product_id = 2;
+    string friendly_version = 3;
+    string full_version = 4;
+    string user_device_name = 5;
+    string user_network_name = 6;
+    string mac_address = 7;
+    Topology topology = 8;
+    Technology technology = 9;
+    repeated string bridged_devices = 10;
+    string ipv4_address = 11;
+    bool attached_to_router = 12;
+
+    // Topology enum defines the device topology
+    enum Topology {
+      UNKNOWN_TOPOLOGY = 0;
+      LOCAL = 1;
+      REMOTE = 2;
+    }
+
+    // Technology enum defines the device technology
+    enum Technology {
+      UNKNOWN_TECHNOLOGY = 0;
+      HPAV_THUNDERBOLT = 3;
+      HPAV_PANTHER = 4;
+      GHN_SPIRIT = 7;
+    }
+  }
+
+  // DataRate represents the data rate between two devices
+  message DataRate {
+    string mac_address_from = 1;
+    string mac_address_to = 2;
+    double tx_rate = 3;
+    double rx_rate = 4;
+  }
+
+  // LogicalNetwork represents a logical PLC network
+  message LogicalNetwork {
+    repeated Device devices = 1;
+    repeated DataRate data_rates = 2;
+  }
+}

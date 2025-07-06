@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package plcnet.api;
+
+option java_package = "plcnet";
+option java_outer_classname = "pairing";
+option go_package = "github.com/asnowfix/go-devolo-plc/plcnetapi/proto";
+
+// PairDeviceStart represents the pair device start request
+message PairDeviceStart {
+  string mac_address = 1;
+}
+
+// PairDeviceResponse represents the pair device response
+message PairDeviceResponse {
+  Result result = 1;
+
+  // Result enum defines the possible results of the pair device operation
+  enum Result {
+    SUCCESS = 0;
+    MACADDR_INVALID = 1;
+    MACADDR_UNKNOWN = 2;
+    COMMUNICATION_ERROR = 254;
+    UNKNOWN_ERROR = 255;
+  }
+}

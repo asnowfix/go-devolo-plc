@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package plcnet.api;
+
+option java_package = "plcnet";
+option java_outer_classname = "identity";
+option go_package = "github.com/asnowfix/go-devolo-plc/plcnetapi/proto";
+
+// IdentifyDeviceStart represents the identify device start request
+message IdentifyDeviceStart {
+  string mac_address = 1;
+}
+
+// IdentifyDeviceStop represents the identify device stop request
+message IdentifyDeviceStop {
+  string mac_address = 1;
+}
+
+// IdentifyDeviceResponse represents the identify device response
+message IdentifyDeviceResponse {
+  Result result = 1;
+
+  // Result enum defines the possible results of the identify device operation
+  enum Result {
+    SUCCESS = 0;
+    MACADDR_INVALID = 1;
+    MACADDR_UNKNOWN = 2;
+    COMMUNICATION_ERROR = 254;
+    UNKNOWN_ERROR = 255;
+  }
+}

@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package device.api;
+
+option java_package = "device";
+option java_outer_classname = "restart";
+option go_package = "github.com/asnowfix/go-devolo-plc/proto";
+
+// Restart Response message
+message RestartResponse {
+  enum Result {
+    SUCCESS = 0;
+    UNKNOWN_ERROR = 255;
+  }
+  Result result = 1;
+  int64 uptime = 2;
+}
+
+// Uptime Get Response message
+message UptimeGetResponse {
+  int64 uptime = 2;
+}

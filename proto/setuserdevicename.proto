@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package plcnet.api;
+
+option java_package = "plcnet";
+option java_outer_classname = "name";
+option go_package = "github.com/asnowfix/go-devolo-plc/plcnetapi/proto";
+
+// SetUserDeviceName represents the set user device name request
+message SetUserDeviceName {
+  string mac_address = 1;
+  string user_device_name = 2;
+}
+
+// SetUserDeviceNameResponse represents the set user device name response
+message SetUserDeviceNameResponse {
+  Result result = 1;
+
+  // Result enum defines the possible results of the set user device name operation
+  enum Result {
+    SUCCESS = 0;
+    MACADDR_INVALID = 1;
+    MACADDR_UNKNOWN = 2;
+    DEVICE_NAME_INVALID = 3;
+    COMMUNICATION_ERROR = 254;
+    UNKNOWN_ERROR = 255;
+  }
+}

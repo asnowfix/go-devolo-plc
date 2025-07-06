@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package device.api;
+
+option java_package = "device";
+option java_outer_classname = "support";
+option go_package = "github.com/asnowfix/go-devolo-plc/proto";
+
+// Support Info Dump message
+message SupportInfoDump {
+  message SupportInfoItem {
+    string label = 1;
+    bytes content = 2;
+  }
+  repeated SupportInfoItem items = 1;
+}
+
+// Support Info Dump Response message
+message SupportInfoDumpResponse {
+  enum Result {
+    SUCCESS = 0;
+    UNKNOWN_ERROR = 255;
+  }
+  Result result = 1;
+  // Field 2 was removed in the original proto
+  SupportInfoDump info = 3;
+}

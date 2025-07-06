@@ -1,0 +1,56 @@
+name: Protobuf
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - 'proto/**/*.proto'
+  pull_request:
+    branches: [ main, develop ]
+    paths:
+      - 'proto/**/*.proto'
+
+jobs:
+  generate:
+    name: Generate Protobuf files
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.21'
+          cache: false
+
+      - name: Install Protoc
+        run: |
+          sudo apt-get update && sudo apt-get install -y protobuf-compiler
+          protoc --version
+
+      - name: Install Go Protobuf plugins
+        run: |
+          go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+          go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+
+      - name: Generate Protobuf files
+        run: |
+          # Add protoc-gen-go to PATH
+          export PATH="$PATH:$(go env GOPATH)/bin"
+          
+          # Generate Go code from proto files
+          for proto_file in proto/*.proto; do
+            echo "Processing $proto_file"
+            protoc --go_out=. --go_opt=paths=source_relative \
+                  --go-grpc_out=. --go-grpc_opt=paths=source_relative \
+                  "$proto_file"
+          done
+
+      - name: Verify generated files
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "Generated files differ from committed files. Please regenerate Protobuf files locally and commit them."
+            git status
+            exit 1
+          fi

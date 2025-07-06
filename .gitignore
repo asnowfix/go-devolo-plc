@@ -30,3 +30,8 @@ go.work.sum
 # Editor/IDE
 # .idea/
 # .vscode/
+
+# Protobuf generated files
+*.pb.go
+*.pb.gw.go
+*.pb.validate.go

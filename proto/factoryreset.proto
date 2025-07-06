@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package device.api;
+
+option java_package = "device";
+option java_outer_classname = "factoryreset";
+option go_package = "github.com/asnowfix/go-devolo-plc/proto";
+
+// Factory Reset Start message
+message FactoryResetStart {
+  enum Result {
+    SUCCESS = 0;
+    UNKNOWN_ERROR = 255;
+  }
+  Result result = 1;
+}
