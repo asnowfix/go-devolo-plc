@@ -2,9 +2,10 @@ run:
   timeout: 5m
   modules-download-mode: readonly
   allow-parallel-runners: true
-  go: '1.22' 
-  work-dir: .
-  skip-dirs:
+  go: '1.22'
+
+directories:
+  exclude:
     - vendor/
 
 linters:
@@ -21,13 +22,14 @@ linters:
     - misspell
     - revive
 
+# Output configuration
 issues:
   exclude-rules:
     - path: _test\.go
       linters:
         - errcheck
-
-output:
-  format: colored-line-number
-  print-issued-lines: true
-  print-linter-name: true
+  # Show all issues
+  max-issues-per-linter: 0
+  max-same-issues: 0
+  # Use colored output
+  include-use-line-number: true
