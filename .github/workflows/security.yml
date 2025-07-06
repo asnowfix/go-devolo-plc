@@ -9,6 +9,11 @@ on:
     # Run security scan once a week (on Monday at 00:00)
     - cron: '0 0 * * 1'
 
+# Required permissions for security scan results upload
+permissions:
+  security-events: write
+  contents: read
+
 jobs:
   gosec:
     name: Run Gosec Security Scanner
