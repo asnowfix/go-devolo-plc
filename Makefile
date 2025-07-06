@@ -49,7 +49,7 @@ tools:
 	$(GOCMD) install golang.org/x/vuln/cmd/govulncheck@latest
 	$(GOCMD) install google.golang.org/protobuf/cmd/protoc-gen-go@latest
 	$(GOCMD) install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
-	curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(GOBIN) v1.47.3
+	curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(GOBIN) latest
 
 # Generate protobuf files
 .PHONY: proto
