@@ -86,38 +86,53 @@ imports: tools
 		echo "All imports are properly formatted."; \
 	fi
 
+# Create temporary go.work file
+.PHONY: create-gowork
+create-gowork:
+	@echo "Creating temporary go.work file..."
+	@echo "go 1.22" > go.work
+	@echo "use ." >> go.work
+
+# Clean up temporary go.work file
+.PHONY: clean-gowork
+clean-gowork:
+	@echo "Removing temporary go.work file..."
+	@rm -f go.work
+
 # Run linters
 .PHONY: lint
-lint: tools
+lint: tools proto create-gowork
 	@echo "Running golangci-lint..."
-	$(GOLANGCI_LINT) run --timeout=5m
+	-$(GOLANGCI_LINT) run --config=.golangci.yml --modules-download-mode=readonly --allow-parallel-runners
 
 	@echo "Running go vet..."
-	$(GOVET) ./...
+	$(GOVET) github.com/asnowfix/go-devolo-plc/...
 
 	@echo "Running staticcheck..."
-	$(STATICCHECK) ./...
+	$(STATICCHECK) github.com/asnowfix/go-devolo-plc/...
+	@$(MAKE) clean-gowork
 
 # Run security checks
 .PHONY: security
-security: tools proto
+security: tools proto create-gowork
 	@echo "Running gosec security scanner..."
-	$(GOSEC) -fmt=text -out=security-results.txt ./...
+	-$(GOSEC) -fmt=text -out=security-results.txt github.com/asnowfix/go-devolo-plc/...
 
 	@echo "Running govulncheck..."
-	$(GOVULNCHECK) ./...
+	-$(GOVULNCHECK) github.com/asnowfix/go-devolo-plc/...
+	@$(MAKE) clean-gowork
 
 # Run tests
 .PHONY: test
 test: proto
 	@echo "Running tests..."
-	$(GOTEST) -v -race -coverprofile=$(COVERAGE_FILE) -covermode=$(COVERAGE_MODE) ./...
+	$(GOTEST) -v -race -coverprofile=$(COVERAGE_FILE) -covermode=$(COVERAGE_MODE) github.com/asnowfix/go-devolo-plc/...
 
 # Build the project
 .PHONY: build
 build: proto
 	@echo "Building..."
-	$(GOBUILD) -v ./...
+	$(GOBUILD) -v github.com/asnowfix/go-devolo-plc/...
 
 # Clean up
 .PHONY: clean

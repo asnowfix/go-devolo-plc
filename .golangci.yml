@@ -1,0 +1,33 @@
+run:
+  timeout: 5m
+  modules-download-mode: readonly
+  allow-parallel-runners: true
+  go: '1.22'
+  work-dir: .
+  skip-dirs:
+    - vendor/
+
+linters:
+  enable:
+    - errcheck
+    - gosimple
+    - govet
+    - ineffassign
+    - staticcheck
+    - typecheck
+    - unused
+    - gofmt
+    - goimports
+    - misspell
+    - revive
+
+issues:
+  exclude-rules:
+    - path: _test\.go
+      linters:
+        - errcheck
+
+output:
+  format: colored-line-number
+  print-issued-lines: true
+  print-linter-name: true
