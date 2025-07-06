@@ -1,6 +1,6 @@
 module github.com/asnowfix/go-devolo-plc
 
-go 1.22
+go 1.24
 
 toolchain go1.24.4
 

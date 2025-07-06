@@ -49,7 +49,7 @@ tools:
 	$(GOCMD) install golang.org/x/vuln/cmd/govulncheck@latest
 	$(GOCMD) install google.golang.org/protobuf/cmd/protoc-gen-go@latest
 	$(GOCMD) install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
-	curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(GOBIN) v1.54.2
+	curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(GOBIN) v1.56.2
 
 # Generate protobuf files
 .PHONY: proto
@@ -90,7 +90,7 @@ imports: tools
 .PHONY: create-gowork
 create-gowork:
 	@echo "Creating temporary go.work file..."
-	@echo "go 1.22" > go.work
+	@echo "go 1.24" > go.work
 	@echo "use ." >> go.work
 
 # Clean up temporary go.work file
