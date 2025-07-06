@@ -8,9 +8,9 @@ type UpdateFirmwareCheck struct {
 
 // Result constants for UpdateFirmwareCheck
 const (
-	UpdateFirmwareCheck_NO_UPDATE_AVAILABLE int32 = 0
-	UpdateFirmwareCheck_UPDATE_AVAILABLE    int32 = 1
-	UpdateFirmwareCheck_CHECK_ERROR         int32 = 2
+	UpdateFirmwareCheckNoUpdateAvailable int32 = 0
+	UpdateFirmwareCheckUpdateAvailable   int32 = 1
+	UpdateFirmwareCheckCheckError        int32 = 2
 )
 
 // UpdateFirmwareStart represents the update firmware start response
@@ -20,7 +20,7 @@ type UpdateFirmwareStart struct {
 
 // Result constants for UpdateFirmwareStart
 const (
-	UpdateFirmwareStart_NO_UPDATE_AVAILABLE int32 = 0
-	UpdateFirmwareStart_UPDATE_STARTED      int32 = 1
-	UpdateFirmwareStart_UPDATE_ERROR        int32 = 2
+	UpdateFirmwareStartNoUpdateAvailable int32 = 0
+	UpdateFirmwareStartUpdateStarted     int32 = 1
+	UpdateFirmwareStartUpdateError       int32 = 2
 )

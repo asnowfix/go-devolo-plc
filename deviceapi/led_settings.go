@@ -7,8 +7,8 @@ type LedSettingsGet struct {
 
 // LED state constants for LedSettingsGet
 const (
-	LedSettingsGet_LED_OFF int32 = 0
-	LedSettingsGet_LED_ON  int32 = 1
+	LedSettingsGetLedOff int32 = 0
+	LedSettingsGetLedOn  int32 = 1
 )
 
 // LedSettingsSet represents the LED settings set request
@@ -18,8 +18,8 @@ type LedSettingsSet struct {
 
 // LED state constants for LedSettingsSet
 const (
-	LedSettingsSet_LED_OFF int32 = 0
-	LedSettingsSet_LED_ON  int32 = 1
+	LedSettingsSetLedOff int32 = 0
+	LedSettingsSetLedOn  int32 = 1
 )
 
 // LedSettingsSetResponse represents the LED settings set response
@@ -29,6 +29,6 @@ type LedSettingsSetResponse struct {
 
 // Result constants for LedSettingsSetResponse
 const (
-	LedSettingsSetResponse_ERROR   int32 = 0
-	LedSettingsSetResponse_SUCCESS int32 = 1
+	LedSettingsSetResponseError   int32 = 0
+	LedSettingsSetResponseSuccess int32 = 1
 )

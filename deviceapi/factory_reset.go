@@ -7,6 +7,6 @@ type FactoryResetStart struct {
 
 // Result constants for FactoryResetStart
 const (
-	FactoryResetStart_RESET_ERROR   int32 = 0
-	FactoryResetStart_RESET_STARTED int32 = 1
+	FactoryResetStartResetError   int32 = 0
+	FactoryResetStartResetStarted int32 = 1
 )

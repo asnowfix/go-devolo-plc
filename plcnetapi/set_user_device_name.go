@@ -13,6 +13,6 @@ type SetUserDeviceNameResponse struct {
 
 // Result constants for SetUserDeviceNameResponse
 const (
-	SetUserDeviceNameResponse_ERROR   int32 = 0
-	SetUserDeviceNameResponse_SUCCESS int32 = 1
+	SetUserDeviceNameResponseError   int32 = 0
+	SetUserDeviceNameResponseSuccess int32 = 1
 )

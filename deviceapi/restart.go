@@ -7,8 +7,8 @@ type RestartResponse struct {
 
 // Result constants for RestartResponse
 const (
-	RestartResponse_RESTART_ERROR   int32 = 0
-	RestartResponse_RESTART_STARTED int32 = 1
+	RestartResponseRestartError   int32 = 0
+	RestartResponseRestartStarted int32 = 1
 )
 
 // UptimeGetResponse represents the uptime get response

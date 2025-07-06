@@ -108,9 +108,9 @@ func (d *Device) Connect(ctx context.Context) error {
 }
 
 // Disconnect closes the connection to the device
-func (d *Device) Disconnect() error {
+func (d *Device) Disconnect() {
 	if !d.connected {
-		return nil
+		return
 	}
 
 	if d.DeviceAPI != nil {
@@ -122,7 +122,6 @@ func (d *Device) Disconnect() error {
 	}
 
 	d.connected = false
-	return nil
 }
 
 // FirmwareDate returns the date the firmware was built

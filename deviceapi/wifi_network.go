@@ -7,8 +7,8 @@ type WifiResult struct {
 
 // Result constants for WifiResult
 const (
-	WifiResult_WIFI_ERROR   int32 = 0
-	WifiResult_WIFI_SUCCESS int32 = 1
+	WifiResultWifiError   int32 = 0
+	WifiResultWifiSuccess int32 = 1
 )
 
 // WifiConnectedStationsGet represents the WiFi connected stations get response

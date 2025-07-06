@@ -17,6 +17,6 @@ type IdentifyDeviceResponse struct {
 
 // Result constants for IdentifyDeviceResponse
 const (
-	IdentifyDeviceResponse_ERROR   int32 = 0
-	IdentifyDeviceResponse_SUCCESS int32 = 1
+	IdentifyDeviceResponseError   int32 = 0
+	IdentifyDeviceResponseSuccess int32 = 1
 )

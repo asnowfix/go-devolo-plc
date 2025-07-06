@@ -114,7 +114,15 @@ func main() {
 			// Ask if user wants to update
 			fmt.Print("Do you want to install this update? (y/n): ")
 			var answer string
-			fmt.Scanln(&answer)
+			n, err := fmt.Scanln(&answer)
+			if err != nil {
+				fmt.Printf("Failed to read answer: %v\n", err)
+				return
+			}
+			if n != 1 {
+				fmt.Println("Invalid answer. Please enter 'y' or 'n'.")
+				return
+			}
 
 			if answer == "y" || answer == "Y" {
 				fmt.Println("Starting firmware update...")

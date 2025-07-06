@@ -1,0 +1,29 @@
+run:
+  timeout: 5m
+  modules-download-mode: readonly
+  allow-parallel-runners: true
+  go: '1.22'
+
+linters:
+  enable:
+    - errcheck
+    - gosimple
+    - govet
+    - ineffassign
+    - staticcheck
+    - typecheck
+    - unused
+    - gofmt
+    - goimports
+    - misspell
+    - revive
+
+# Output configuration
+issues:
+  exclude-rules:
+    - path: _test\.go
+      linters:
+        - errcheck
+  # Show all issues
+  max-issues-per-linter: 0
+  max-same-issues: 0

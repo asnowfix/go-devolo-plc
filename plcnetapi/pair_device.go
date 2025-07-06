@@ -12,6 +12,6 @@ type PairDeviceResponse struct {
 
 // Result constants for PairDeviceResponse
 const (
-	PairDeviceResponse_ERROR   int32 = 0
-	PairDeviceResponse_SUCCESS int32 = 1
+	PairDeviceResponseError   int32 = 0
+	PairDeviceResponseSuccess int32 = 1
 )
