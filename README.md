@@ -4,19 +4,19 @@ Go implementation of the devolo PLC API for communicating with devolo PLC device
 
 ## Table of Content
 
-- [Status](#status)
-- [Overview](#overview)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Features](#features)
-- [Examples](#examples)
-- [Contributing](#contributing)
-- [License](#license)
-- [Acknowledgments](#acknowledgments)
+- [go-devolo-plc](#go-devolo-plc)
+  - [Table of Content](#table-of-content)
+  - [Status](#status)
+  - [Overview](#overview)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Features](#features)
+  - [License](#license)
+  - [Acknowledgments](#acknowledgments)
 
 ## Status
 
-This library is currently in (very) early development and is not yet ready for production use.
+This library is currently in (very) early development: very few things actually work.
 
 ## Overview
 
