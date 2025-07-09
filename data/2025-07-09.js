@@ -1,10 +1,10 @@
 
 mesh_request = [
     {
-        "jsonrpc":"2.0",
-        "method":"call",
-        "id":"31120a8a-1bc3-4c13-b24c-45a7329c9832",
-        "params":[
+        "jsonrpc": "2.0",
+        "method": "call",
+        "id": "31120a8a-1bc3-4c13-b24c-45a7329c9832",
+        "params": [
             "00000000000000000000000000000000",
             "network.mesh",
             "easymesh_supported",
@@ -27,17 +27,17 @@ mesh_response = [
 ]
 
 login_request = {
-    "jsonrpc":"2.0",
-    "method":"call",
-    "id":"481b9551-2e03-4af8-a7da-b58ddace8d2b",
-    "params":[
+    "jsonrpc": "2.0",
+    "method": "call",
+    "id": "481b9551-2e03-4af8-a7da-b58ddace8d2b",
+    "params": [
         "00000000000000000000000000000000",
         "session",
         "login",
         {
-            "username":"root",
-            "password":"",
-            "timeout":900
+            "username": "root",
+            "password": "",
+            "timeout": 900
         }
     ]
 }
@@ -1243,10 +1243,10 @@ login_response = {
 }
 
 get_timeout_request = {
-    "jsonrpc":"2.0",
-    "method":"call",
-    "id":"ae7dc866-a3c7-41b3-884a-af62172067c5",
-    "params":[
+    "jsonrpc": "2.0",
+    "method": "call",
+    "id": "ae7dc866-a3c7-41b3-884a-af62172067c5",
+    "params": [
         "af85028de1f19747fc33e59b4e89d989",
         "session",
         "get_timeout",
@@ -1270,10 +1270,10 @@ get_timeout_response = {
 XXX
 
 get_device_name_request = {
-    "jsonrpc":"2.0",
-    "method":"call",
-    "id":"a6586d0c-158f-44cf-a695-4d404de82f51",
-    "params":[
+    "jsonrpc": "2.0",
+    "method": "call",
+    "id": "a6586d0c-158f-44cf-a695-4d404de82f51",
+    "params": [
         "00000000000000000000000000000000",
         "device_name",
         "get",
@@ -1293,10 +1293,10 @@ get_device_name_response = {
 }
 
 get_timeout_request = {
-    "jsonrpc":"2.0",
-    "method":"call",
-    "id":"5668521e-d121-4f24-b5fb-d9c9202f345c",
-    "params":[
+    "jsonrpc": "2.0",
+    "method": "call",
+    "id": "5668521e-d121-4f24-b5fb-d9c9202f345c",
+    "params": [
         "af85028de1f19747fc33e59b4e89d989",
         "session",
         "get_timeout",
@@ -1318,14 +1318,14 @@ get_timeout_response = {
 }
 
 uci_get_request = {
-    "jsonrpc":"2.0",
-    "method":"call",
-    "id":"27370bf8-5fda-477c-a565-73a34eee7f42",
-    "params":[
+    "jsonrpc": "2.0",
+    "method": "call",
+    "id": "27370bf8-5fda-477c-a565-73a34eee7f42",
+    "params": [
         "af85028de1f19747fc33e59b4e89d989",
         "uci",
         "get",
-        {"config":"upgrade"}
+        { "config": "upgrade" }
     ]
 }
 
@@ -1350,10 +1350,10 @@ uci_get_response = {
 
 system_board_request = [
     {
-        "jsonrpc":"2.0",
-        "method":"call",
-        "id":"d4e6e268-25a7-4791-94b9-f044fc1f80e0",
-        "params":[
+        "jsonrpc": "2.0",
+        "method": "call",
+        "id": "d4e6e268-25a7-4791-94b9-f044fc1f80e0",
+        "params": [
             "af85028de1f19747fc33e59b4e89d989",
             "system",
             "board",
@@ -1361,10 +1361,10 @@ system_board_request = [
         ]
     },
     {
-        "jsonrpc":"2.0",
-        "method":"call",
-        "id":"a0c3cde1-4da1-4d72-94f3-cc30871a971a",
-        "params":[
+        "jsonrpc": "2.0",
+        "method": "call",
+        "id": "a0c3cde1-4da1-4d72-94f3-cc30871a971a",
+        "params": [
             "af85028de1f19747fc33e59b4e89d989",
             "system.management",
             "version",
@@ -1372,39 +1372,39 @@ system_board_request = [
         ]
     },
     {
-        "jsonrpc":"2.0",
-        "method":"call",
-        "id":"c6cbad3c-6092-4532-907f-e2baa02c7b17",
-        "params":[
+        "jsonrpc": "2.0",
+        "method": "call",
+        "id": "c6cbad3c-6092-4532-907f-e2baa02c7b17",
+        "params": [
             "af85028de1f19747fc33e59b4e89d989",
             "uci",
             "get",
             {
-                "config":"system",
-                "section":"@system[0]"
+                "config": "system",
+                "section": "@system[0]"
             }
         ]
     },
     {
-        "jsonrpc":"2.0",
-        "method":"call",
-        "id":"c450c58e-e8ae-4435-9d61-731dad3f4f5f",
-        "params":[
+        "jsonrpc": "2.0",
+        "method": "call",
+        "id": "c450c58e-e8ae-4435-9d61-731dad3f4f5f",
+        "params": [
             "af85028de1f19747fc33e59b4e89d989",
             "uci",
             "state",
             {
-                "config":"delos",
-                "section":"baptization",
-                "option":"SerialNumber"
+                "config": "delos",
+                "section": "baptization",
+                "option": "SerialNumber"
             }
         ]
     },
     {
-        "jsonrpc":"2.0",
-        "method":"call",
-        "id":"fcad21fc-5e58-49fd-ad9e-caa1b8ba58cf",
-        "params":[
+        "jsonrpc": "2.0",
+        "method": "call",
+        "id": "fcad21fc-5e58-49fd-ad9e-caa1b8ba58cf",
+        "params": [
             "af85028de1f19747fc33e59b4e89d989",
             "device_name",
             "get",
@@ -1552,17 +1552,17 @@ request = {
 }
 
 request = {
-    "jsonrpc":"2.0",
-    "method":"call",
-    "id":"481b9551-2e03-4af8-a7da-b58ddace8d2b",
-    "params":[
+    "jsonrpc": "2.0",
+    "method": "call",
+    "id": "481b9551-2e03-4af8-a7da-b58ddace8d2b",
+    "params": [
         "00000000000000000000000000000000",
         "session",
         "login",
         {
-            "username":"root",
-            "password":"",
-            "timeout":900
+            "username": "root",
+            "password": "",
+            "timeout": 900
         }
     ]
 }
@@ -1588,8 +1588,7 @@ request = {
         }
     ]
 }
-
-response = {{
+response = {
     "jsonrpc": "2.0",
     "id": "27370bf8-5fda-477c-a565-73a34eee7f42",
     "result": [
@@ -1610,10 +1609,10 @@ response = {{
 
 request = [
     {
-        "jsonrpc":"2.0",
-        "method":"call",
-        "id":"d4e6e268-25a7-4791-94b9-f044fc1f80e0",
-        "params":[
+        "jsonrpc": "2.0",
+        "method": "call",
+        "id": "d4e6e268-25a7-4791-94b9-f044fc1f80e0",
+        "params": [
             "af85028de1f19747fc33e59b4e89d989",
             "system",
             "board",
@@ -1621,10 +1620,10 @@ request = [
         ]
     },
     {
-        "jsonrpc":"2.0",
-        "method":"call",
-        "id":"a0c3cde1-4da1-4d72-94f3-cc30871a971a",
-        "params":[
+        "jsonrpc": "2.0",
+        "method": "call",
+        "id": "a0c3cde1-4da1-4d72-94f3-cc30871a971a",
+        "params": [
             "af85028de1f19747fc33e59b4e89d989",
             "system.management",
             "version",
@@ -1632,32 +1631,32 @@ request = [
         ]
     },
     {
-        "jsonrpc":"2.0",
-        "method":"call",
-        "id":"c6cbad3c-6092-4532-907f-e2baa02c7b17",
-        "params":[
+        "jsonrpc": "2.0",
+        "method": "call",
+        "id": "c6cbad3c-6092-4532-907f-e2baa02c7b17",
+        "params": [
             "af85028de1f19747fc33e59b4e89d989",
             "uci",
             "get",
-            {"config":"system","section":"@system[0]"}
+            { "config": "system", "section": "@system[0]" }
         ]
     },
     {
-        "jsonrpc":"2.0",
-        "method":"call",
-        "id":"c450c58e-e8ae-4435-9d61-731dad3f4f5f",
-        "params":[
+        "jsonrpc": "2.0",
+        "method": "call",
+        "id": "c450c58e-e8ae-4435-9d61-731dad3f4f5f",
+        "params": [
             "af85028de1f19747fc33e59b4e89d989",
             "uci",
             "state",
-            {"config":"delos","section":"baptization","option":"SerialNumber"}
+            { "config": "delos", "section": "baptization", "option": "SerialNumber" }
         ]
     },
     {
-        "jsonrpc":"2.0",
-        "method":"call",
-        "id":"fcad21fc-5e58-49fd-ad9e-caa1b8ba58cf",
-        "params":[
+        "jsonrpc": "2.0",
+        "method": "call",
+        "id": "fcad21fc-5e58-49fd-ad9e-caa1b8ba58cf",
+        "params": [
             "af85028de1f19747fc33e59b4e89d989",
             "device_name",
             "get",
@@ -1744,7 +1743,7 @@ response = [
     }
 ]
 
-request = {"jsonrpc":"2.0","method":"call","id":"ed6899a2-306d-476c-b4f9-9955d1136e1e","params":["af85028de1f19747fc33e59b4e89d989","network.device","status",{"name":"br-lan"}]}
+request = { "jsonrpc": "2.0", "method": "call", "id": "ed6899a2-306d-476c-b4f9-9955d1136e1e", "params": ["af85028de1f19747fc33e59b4e89d989", "network.device", "status", { "name": "br-lan" }] }
 
 response = {
     "jsonrpc": "2.0",
@@ -1804,7 +1803,7 @@ response = {
     ]
 }
 
-request = [{"jsonrpc":"2.0","method":"call","id":"d37aa973-93a5-4761-8cba-8c5ab7a009cc","params":["af85028de1f19747fc33e59b4e89d989","uci","get",{"config":"wireless","section":"guest_wifi"}]},{"jsonrpc":"2.0","method":"call","id":"5f62a831-b483-41dc-b24f-72f1b24c138f","params":["af85028de1f19747fc33e59b4e89d989","system","info",{}]}]
+request = [{ "jsonrpc": "2.0", "method": "call", "id": "d37aa973-93a5-4761-8cba-8c5ab7a009cc", "params": ["af85028de1f19747fc33e59b4e89d989", "uci", "get", { "config": "wireless", "section": "guest_wifi" }] }, { "jsonrpc": "2.0", "method": "call", "id": "5f62a831-b483-41dc-b24f-72f1b24c138f", "params": ["af85028de1f19747fc33e59b4e89d989", "system", "info", {}] }]
 
 response = [
     {
@@ -1852,14 +1851,14 @@ response = [
 ]
 
 request = {
-    "jsonrpc":"2.0",
-    "method":"call",
-    "id":"5aee4574-6d35-4dc2-a168-28b850d2a7a9",
-    "params":[
+    "jsonrpc": "2.0",
+    "method": "call",
+    "id": "5aee4574-6d35-4dc2-a168-28b850d2a7a9",
+    "params": [
         "af85028de1f19747fc33e59b4e89d989",
         "uci",
         "get",
-        {"config":"vlan","type":"vlan"}
+        { "config": "vlan", "type": "vlan" }
     ]
 }
 
@@ -1875,10 +1874,10 @@ response = {
 }
 
 request = {
-    "jsonrpc":"2.0",
-    "method":"call",
-    "id":"e38786d0-23f6-4602-a975-a7dfe61275f5",
-    "params":[
+    "jsonrpc": "2.0",
+    "method": "call",
+    "id": "e38786d0-23f6-4602-a975-a7dfe61275f5",
+    "params": [
         "af85028de1f19747fc33e59b4e89d989",
         "system",
         "info",
@@ -1915,10 +1914,10 @@ response = {
 
 request = [
     {
-        "jsonrpc":"2.0",
-        "method":"call",
-        "id":"3ddedffa-8df6-42a4-9ba6-7c4437788d6c",
-        "params":[
+        "jsonrpc": "2.0",
+        "method": "call",
+        "id": "3ddedffa-8df6-42a4-9ba6-7c4437788d6c",
+        "params": [
             "af85028de1f19747fc33e59b4e89d989",
             "network.info",
             "radio_state",
@@ -1926,10 +1925,10 @@ request = [
         ]
     },
     {
-        "jsonrpc":"2.0",
-        "method":"call",
-        "id":"c28fe4b5-d879-4b56-b863-5a9b8057a247",
-        "params":[
+        "jsonrpc": "2.0",
+        "method": "call",
+        "id": "c28fe4b5-d879-4b56-b863-5a9b8057a247",
+        "params": [
             "af85028de1f19747fc33e59b4e89d989",
             "iwinfo",
             "devices",
@@ -1937,26 +1936,27 @@ request = [
         ]
     },
     {
-        "jsonrpc":"2.0",
-        "method":"call",
-        "id":"975ad5b1-cdad-4321-aebd-dd91922d2e26",
-        "params":[
+        "jsonrpc": "2.0",
+        "method": "call",
+        "id": "975ad5b1-cdad-4321-aebd-dd91922d2e26",
+        "params": [
             "af85028de1f19747fc33e59b4e89d989",
             "uci",
             "get",
             {
-                "config":"wireless",
-                "type":"wifi-iface",
-                "match":{"mode":"ap"}
+                "config": "wireless",
+                "type": "wifi-iface",
+                "match": { "mode": "ap" }
             }
         ]
-    },{
-        "jsonrpc":"2.0",
-        "method":"call",
-        "id":"6a62e873-54c8-4929-b8de-41f4ed97cc81",
-        "params":[
+    }, {
+        "jsonrpc": "2.0",
+        "method": "call",
+        "id": "6a62e873-54c8-4929-b8de-41f4ed97cc81",
+        "params": [
             "af85028de1f19747fc33e59b4e89d989",
-            "uci","get",{"config":"wireless","type":"wifi-iface","match":{"mode":"sta"}}]},{"jsonrpc":"2.0","method":"call","id":"44a7f854-1c7c-4a91-8e67-c6b1700309fd","params":["af85028de1f19747fc33e59b4e89d989","uci","get",{"config":"vlan","type":"vlan"}]},{"jsonrpc":"2.0","method":"call","id":"b04b85f2-cf5a-43d7-8f4a-1f2aede34061","params":["af85028de1f19747fc33e59b4e89d989","uci","get",{"config":"wireless","type":"wifi-device"}]}]
+            "uci", "get", { "config": "wireless", "type": "wifi-iface", "match": { "mode": "sta" } }]
+    }, { "jsonrpc": "2.0", "method": "call", "id": "44a7f854-1c7c-4a91-8e67-c6b1700309fd", "params": ["af85028de1f19747fc33e59b4e89d989", "uci", "get", { "config": "vlan", "type": "vlan" }] }, { "jsonrpc": "2.0", "method": "call", "id": "b04b85f2-cf5a-43d7-8f4a-1f2aede34061", "params": ["af85028de1f19747fc33e59b4e89d989", "uci", "get", { "config": "wireless", "type": "wifi-device" }] }]
 
 response = [
     {
@@ -2275,7 +2275,7 @@ response = [
     }
 ]
 
-request = [{"jsonrpc":"2.0","method":"call","id":"98d2cded-e7b5-4427-85fa-45afc7e03221","params":["af85028de1f19747fc33e59b4e89d989","network.ghntool","ghninfo",{}]},{"jsonrpc":"2.0","method":"call","id":"7f8b0faf-a05c-4582-bd27-7983bb372be5","params":["af85028de1f19747fc33e59b4e89d989","network.ghntool","get_settings",{}]}]
+request = [{ "jsonrpc": "2.0", "method": "call", "id": "98d2cded-e7b5-4427-85fa-45afc7e03221", "params": ["af85028de1f19747fc33e59b4e89d989", "network.ghntool", "ghninfo", {}] }, { "jsonrpc": "2.0", "method": "call", "id": "7f8b0faf-a05c-4582-bd27-7983bb372be5", "params": ["af85028de1f19747fc33e59b4e89d989", "network.ghntool", "get_settings", {}] }]
 
 response = [
     {
@@ -2332,7 +2332,7 @@ response = [
     }
 ]
 
-network_interface_dump_request = [{"jsonrpc":"2.0","method":"call","id":"096ca0e3-e383-49f7-ad34-104e0d0f526b","params":["af85028de1f19747fc33e59b4e89d989","network.interface","dump",{}]},{"jsonrpc":"2.0","method":"call","id":"63bf874c-97bb-4121-8325-12f140d539ae","params":["af85028de1f19747fc33e59b4e89d989","uci","get",{"config":"vlan"}]}]
+network_interface_dump_request = [{ "jsonrpc": "2.0", "method": "call", "id": "096ca0e3-e383-49f7-ad34-104e0d0f526b", "params": ["af85028de1f19747fc33e59b4e89d989", "network.interface", "dump", {}] }, { "jsonrpc": "2.0", "method": "call", "id": "63bf874c-97bb-4121-8325-12f140d539ae", "params": ["af85028de1f19747fc33e59b4e89d989", "uci", "get", { "config": "vlan" }] }]
 
 network_interface_dump_response = [
     {
@@ -2509,8 +2509,9 @@ network_interface_dump_response = [
 ]
 
 network_swconfig_list_request = {
-    "jsonrpc":"2.0",
-    "method":"call","id":"ca3b5738-e1ab-4955-b766-2504b0c041f3","params":["af85028de1f19747fc33e59b4e89d989","network.swconfig","list",{}]}
+    "jsonrpc": "2.0",
+    "method": "call", "id": "ca3b5738-e1ab-4955-b766-2504b0c041f3", "params": ["af85028de1f19747fc33e59b4e89d989", "network.swconfig", "list", {}]
+}
 
 network_swconfig_list_response = {
     "jsonrpc": "2.0",
@@ -2525,7 +2526,7 @@ network_swconfig_list_response = {
     ]
 }
 
-uci_state_calibration_check_request = {"jsonrpc":"2.0","method":"call","id":"0d752e99-4aac-4829-be7b-35efb261d5e8","params":["af85028de1f19747fc33e59b4e89d989","uci","state",{"config":"delos","section":"calibration_check"}]}
+uci_state_calibration_check_request = { "jsonrpc": "2.0", "method": "call", "id": "0d752e99-4aac-4829-be7b-35efb261d5e8", "params": ["af85028de1f19747fc33e59b4e89d989", "uci", "state", { "config": "delos", "section": "calibration_check" }] }
 
 uci_state_calibration_check_response = {
     "jsonrpc": "2.0",
@@ -2543,7 +2544,7 @@ uci_state_calibration_check_response = {
     ]
 }
 
-uci_state_baptization_check_request = {"jsonrpc":"2.0","method":"call","id":"b095fb7e-734f-4fca-956d-10df812d3602","params":["af85028de1f19747fc33e59b4e89d989","uci","state",{"config":"delos","section":"baptization_check"}]}
+uci_state_baptization_check_request = { "jsonrpc": "2.0", "method": "call", "id": "b095fb7e-734f-4fca-956d-10df812d3602", "params": ["af85028de1f19747fc33e59b4e89d989", "uci", "state", { "config": "delos", "section": "baptization_check" }] }
 
 uci_state_baptization_check_response = {
     "jsonrpc": "2.0",
@@ -2562,10 +2563,11 @@ uci_state_baptization_check_response = {
 }
 
 fwuagent_get_deployment_request = {
-    "jsonrpc":"2.0",
-    "method":"call",
-    "id":"b22ad86e-0276-4498-85a7-6089d651eb93",
-    "params":["af85028de1f19747fc33e59b4e89d989","fwuagent","get_deployment",{}]}
+    "jsonrpc": "2.0",
+    "method": "call",
+    "id": "b22ad86e-0276-4498-85a7-6089d651eb93",
+    "params": ["af85028de1f19747fc33e59b4e89d989", "fwuagent", "get_deployment", {}]
+}
 
 fwuagent_get_deployment_response = {
     "jsonrpc": "2.0",
@@ -2581,10 +2583,11 @@ fwuagent_get_deployment_response = {
 }
 
 fwuagent_get_service_request = {
-    "jsonrpc":"2.0",
-    "method":"call",
-    "id":"7b30ccc3-b896-4710-ab2c-b59eb3f5c671",
-    "params":["af85028de1f19747fc33e59b4e89d989","uci","get",{"config":"fwuagent","section":"service"}]}
+    "jsonrpc": "2.0",
+    "method": "call",
+    "id": "7b30ccc3-b896-4710-ab2c-b59eb3f5c671",
+    "params": ["af85028de1f19747fc33e59b4e89d989", "uci", "get", { "config": "fwuagent", "section": "service" }]
+}
 
 fwuagent_get_service_response = {
     "jsonrpc": "2.0",
@@ -2607,14 +2610,14 @@ fwuagent_get_service_response = {
 }
 
 network_swconfig_status_request = [{
-    "jsonrpc":"2.0",
-    "method":"call",
-    "id":"dc6d97f0-f4f2-408c-b93c-34a363317a32",
-    "params":[
+    "jsonrpc": "2.0",
+    "method": "call",
+    "id": "dc6d97f0-f4f2-408c-b93c-34a363317a32",
+    "params": [
         "af85028de1f19747fc33e59b4e89d989",
         "network.swconfig",
         "status",
-        {"switch":"QCA DESS"}
+        { "switch": "QCA DESS" }
     ]
 }]
 
@@ -2680,7 +2683,7 @@ network_swconfig_status_response = [
     }
 ]
 
-network_info_clients_request = [{"jsonrpc":"2.0","method":"call","id":"aa062975-454d-4d03-983e-326a81863839","params":["af85028de1f19747fc33e59b4e89d989","network.info","clients",{"device":"ath0"}]},{"jsonrpc":"2.0","method":"call","id":"5b98d682-83f8-409f-b32c-c634fe7d8034","params":["af85028de1f19747fc33e59b4e89d989","network.info","clients",{"device":"ath1"}]}]
+network_info_clients_request = [{ "jsonrpc": "2.0", "method": "call", "id": "aa062975-454d-4d03-983e-326a81863839", "params": ["af85028de1f19747fc33e59b4e89d989", "network.info", "clients", { "device": "ath0" }] }, { "jsonrpc": "2.0", "method": "call", "id": "5b98d682-83f8-409f-b32c-c634fe7d8034", "params": ["af85028de1f19747fc33e59b4e89d989", "network.info", "clients", { "device": "ath1" }] }]
 
 network_info_clients_response = [
     {
@@ -2786,7 +2789,7 @@ network_info_clients_response = [
     }
 ]
 
-iwinfo_info_request = {"jsonrpc":"2.0","method":"call","id":"d2451a15-6e0f-4d8c-a237-46a043758e0e","params":["af85028de1f19747fc33e59b4e89d989","iwinfo","info",{"device":"ath0"}]}
+iwinfo_info_request = { "jsonrpc": "2.0", "method": "call", "id": "d2451a15-6e0f-4d8c-a237-46a043758e0e", "params": ["af85028de1f19747fc33e59b4e89d989", "iwinfo", "info", { "device": "ath0" }] }
 
 iwinfo_info_response = {
     "jsonrpc": "2.0",
@@ -2830,7 +2833,7 @@ iwinfo_info_response = {
     ]
 }
 
-iwinfo_info_request = {"jsonrpc":"2.0","method":"call","id":"ae856832-302b-40a1-9226-02d40ad098c9","params":["af85028de1f19747fc33e59b4e89d989","iwinfo","info",{"device":"ath1"}]}
+iwinfo_info_request = { "jsonrpc": "2.0", "method": "call", "id": "ae856832-302b-40a1-9226-02d40ad098c9", "params": ["af85028de1f19747fc33e59b4e89d989", "iwinfo", "info", { "device": "ath1" }] }
 
 iwinfo_info_response = {
     "jsonrpc": "2.0",
@@ -2874,7 +2877,7 @@ iwinfo_info_response = {
     ]
 }
 
-system_info_request = {"jsonrpc":"2.0","method":"call","id":"1d663e90-00b7-4855-815b-0130a846c610","params":["af85028de1f19747fc33e59b4e89d989","system","info",{}]}
+system_info_request = { "jsonrpc": "2.0", "method": "call", "id": "1d663e90-00b7-4855-815b-0130a846c610", "params": ["af85028de1f19747fc33e59b4e89d989", "system", "info", {}] }
 
 system_info_response = {
     "jsonrpc": "2.0",
@@ -2903,7 +2906,7 @@ system_info_response = {
     ]
 }
 
-network_info_radio_state_request = [{"jsonrpc":"2.0","method":"call","id":"2ef3a3e2-240b-4058-bcd2-cda6f54ac4c1","params":["af85028de1f19747fc33e59b4e89d989","network.info","radio_state",{}]},{"jsonrpc":"2.0","method":"call","id":"99508956-0709-4d45-a169-b5a27407ace0","params":["af85028de1f19747fc33e59b4e89d989","iwinfo","devices",{}]},{"jsonrpc":"2.0","method":"call","id":"9bbf15b7-514f-4ed2-a77e-1c82148c1a19","params":["af85028de1f19747fc33e59b4e89d989","uci","get",{"config":"wireless","type":"wifi-iface","match":{"mode":"ap"}}]},{"jsonrpc":"2.0","method":"call","id":"f685dddf-6bf8-4b2a-b75d-61ef705dfa67","params":["af85028de1f19747fc33e59b4e89d989","uci","get",{"config":"wireless","type":"wifi-iface","match":{"mode":"sta"}}]},{"jsonrpc":"2.0","method":"call","id":"afabd07d-6573-4717-9229-8f5b3d454b7b","params":["af85028de1f19747fc33e59b4e89d989","uci","get",{"config":"vlan","type":"vlan"}]},{"jsonrpc":"2.0","method":"call","id":"c936d895-548a-4458-bb9a-b6602f561e8c","params":["af85028de1f19747fc33e59b4e89d989","uci","get",{"config":"wireless","type":"wifi-device"}]}]
+network_info_radio_state_request = [{ "jsonrpc": "2.0", "method": "call", "id": "2ef3a3e2-240b-4058-bcd2-cda6f54ac4c1", "params": ["af85028de1f19747fc33e59b4e89d989", "network.info", "radio_state", {}] }, { "jsonrpc": "2.0", "method": "call", "id": "99508956-0709-4d45-a169-b5a27407ace0", "params": ["af85028de1f19747fc33e59b4e89d989", "iwinfo", "devices", {}] }, { "jsonrpc": "2.0", "method": "call", "id": "9bbf15b7-514f-4ed2-a77e-1c82148c1a19", "params": ["af85028de1f19747fc33e59b4e89d989", "uci", "get", { "config": "wireless", "type": "wifi-iface", "match": { "mode": "ap" } }] }, { "jsonrpc": "2.0", "method": "call", "id": "f685dddf-6bf8-4b2a-b75d-61ef705dfa67", "params": ["af85028de1f19747fc33e59b4e89d989", "uci", "get", { "config": "wireless", "type": "wifi-iface", "match": { "mode": "sta" } }] }, { "jsonrpc": "2.0", "method": "call", "id": "afabd07d-6573-4717-9229-8f5b3d454b7b", "params": ["af85028de1f19747fc33e59b4e89d989", "uci", "get", { "config": "vlan", "type": "vlan" }] }, { "jsonrpc": "2.0", "method": "call", "id": "c936d895-548a-4458-bb9a-b6602f561e8c", "params": ["af85028de1f19747fc33e59b4e89d989", "uci", "get", { "config": "wireless", "type": "wifi-device" }] }]
 
 network_info_radio_state_response = [
     {
@@ -3222,7 +3225,7 @@ network_info_radio_state_response = [
     }
 ]
 
-network_ghntool_ghninfo_request = [{"jsonrpc":"2.0","method":"call","id":"81aaca36-7e46-4bbb-bd8e-efca1af07c05","params":["af85028de1f19747fc33e59b4e89d989","network.ghntool","ghninfo",{}]},{"jsonrpc":"2.0","method":"call","id":"d748dcb0-0cd4-4db9-8546-80a245119e50","params":["af85028de1f19747fc33e59b4e89d989","network.ghntool","get_settings",{}]}]
+network_ghntool_ghninfo_request = [{ "jsonrpc": "2.0", "method": "call", "id": "81aaca36-7e46-4bbb-bd8e-efca1af07c05", "params": ["af85028de1f19747fc33e59b4e89d989", "network.ghntool", "ghninfo", {}] }, { "jsonrpc": "2.0", "method": "call", "id": "d748dcb0-0cd4-4db9-8546-80a245119e50", "params": ["af85028de1f19747fc33e59b4e89d989", "network.ghntool", "get_settings", {}] }]
 
 network_ghntool_ghninfo_response = [
     {
@@ -3279,7 +3282,7 @@ network_ghntool_ghninfo_response = [
     }
 ]
 
-network_swconfig_list_request = {"jsonrpc":"2.0","method":"call","id":"73cc88cb-b961-456e-88fe-3bb751a76566","params":["af85028de1f19747fc33e59b4e89d989","network.swconfig","list",{}]}
+network_swconfig_list_request = { "jsonrpc": "2.0", "method": "call", "id": "73cc88cb-b961-456e-88fe-3bb751a76566", "params": ["af85028de1f19747fc33e59b4e89d989", "network.swconfig", "list", {}] }
 
 network_swconfig_list_response = {
     "jsonrpc": "2.0",
@@ -3294,7 +3297,7 @@ network_swconfig_list_response = {
     ]
 }
 
-network_swconfig_status_request = [{"jsonrpc":"2.0","method":"call","id":"e021bf4c-3afc-4371-b175-8f33ab64e430","params":["af85028de1f19747fc33e59b4e89d989","network.swconfig","status",{"switch":"QCA DESS"}]}]
+network_swconfig_status_request = [{ "jsonrpc": "2.0", "method": "call", "id": "e021bf4c-3afc-4371-b175-8f33ab64e430", "params": ["af85028de1f19747fc33e59b4e89d989", "network.swconfig", "status", { "switch": "QCA DESS" }] }]
 
 network_swconfig_status_response = [
     {
@@ -3358,7 +3361,7 @@ network_swconfig_status_response = [
     }
 ]
 
-network_info_clients_request = [{"jsonrpc":"2.0","method":"call","id":"c5187748-d714-4b04-9f15-a621f65d3103","params":["af85028de1f19747fc33e59b4e89d989","network.info","clients",{"device":"ath0"}]},{"jsonrpc":"2.0","method":"call","id":"0c5841b1-c485-4c69-9b85-28659e00b15e","params":["af85028de1f19747fc33e59b4e89d989","network.info","clients",{"device":"ath1"}]}]
+network_info_clients_request = [{ "jsonrpc": "2.0", "method": "call", "id": "c5187748-d714-4b04-9f15-a621f65d3103", "params": ["af85028de1f19747fc33e59b4e89d989", "network.info", "clients", { "device": "ath0" }] }, { "jsonrpc": "2.0", "method": "call", "id": "0c5841b1-c485-4c69-9b85-28659e00b15e", "params": ["af85028de1f19747fc33e59b4e89d989", "network.info", "clients", { "device": "ath1" }] }]
 
 network_info_clients_response = [
     {
@@ -3464,7 +3467,7 @@ network_info_clients_response = [
     }
 ]
 
-iwinfo_info_request = {"jsonrpc":"2.0","method":"call","id":"71c69278-bdac-4117-894b-bdc77e3b7091","params":["af85028de1f19747fc33e59b4e89d989","iwinfo","info",{"device":"ath0"}]}
+iwinfo_info_request = { "jsonrpc": "2.0", "method": "call", "id": "71c69278-bdac-4117-894b-bdc77e3b7091", "params": ["af85028de1f19747fc33e59b4e89d989", "iwinfo", "info", { "device": "ath0" }] }
 
 iwinfo_info_response = {
     "jsonrpc": "2.0",
@@ -3508,7 +3511,7 @@ iwinfo_info_response = {
     ]
 }
 
-iwinfo_info_request = {"jsonrpc":"2.0","method":"call","id":"c918ab36-3908-497f-b502-12e1d84d4568","params":["af85028de1f19747fc33e59b4e89d989","iwinfo","info",{"device":"ath1"}]}
+iwinfo_info_request = { "jsonrpc": "2.0", "method": "call", "id": "c918ab36-3908-497f-b502-12e1d84d4568", "params": ["af85028de1f19747fc33e59b4e89d989", "iwinfo", "info", { "device": "ath1" }] }
 
 iwinfo_info_response = {
     "jsonrpc": "2.0",
@@ -3552,7 +3555,7 @@ iwinfo_info_response = {
     ]
 }
 
-system_info_request = {"jsonrpc":"2.0","method":"call","id":"76be4658-8f5f-4542-866e-de2951ec5ec3","params":["af85028de1f19747fc33e59b4e89d989","system","info",{}]}
+system_info_request = { "jsonrpc": "2.0", "method": "call", "id": "76be4658-8f5f-4542-866e-de2951ec5ec3", "params": ["af85028de1f19747fc33e59b4e89d989", "system", "info", {}] }
 
 system_info_response = {
     "jsonrpc": "2.0",
@@ -3581,7 +3584,7 @@ system_info_response = {
     ]
 }
 
-network_info_radio_state_request = [{"jsonrpc":"2.0","method":"call","id":"f3b58c0c-91d2-40f3-a020-4b349e0c0a98","params":["af85028de1f19747fc33e59b4e89d989","network.info","radio_state",{}]},{"jsonrpc":"2.0","method":"call","id":"623846f4-10fe-44df-8a18-b06bcf74e471","params":["af85028de1f19747fc33e59b4e89d989","iwinfo","devices",{}]},{"jsonrpc":"2.0","method":"call","id":"c67c5077-6f05-4ddb-a8f9-8bf29d5e5e1e","params":["af85028de1f19747fc33e59b4e89d989","uci","get",{"config":"wireless","type":"wifi-iface","match":{"mode":"ap"}}]},{"jsonrpc":"2.0","method":"call","id":"cd762b7a-a964-4c9e-9746-4be7854665ff","params":["af85028de1f19747fc33e59b4e89d989","uci","get",{"config":"wireless","type":"wifi-iface","match":{"mode":"sta"}}]},{"jsonrpc":"2.0","method":"call","id":"a316e989-bed0-4c8d-9774-8957b2b0db2c","params":["af85028de1f19747fc33e59b4e89d989","uci","get",{"config":"vlan","type":"vlan"}]},{"jsonrpc":"2.0","method":"call","id":"3c40b73a-c8cf-48f0-9df7-fd87edab042b","params":["af85028de1f19747fc33e59b4e89d989","uci","get",{"config":"wireless","type":"wifi-device"}]}]
+network_info_radio_state_request = [{ "jsonrpc": "2.0", "method": "call", "id": "f3b58c0c-91d2-40f3-a020-4b349e0c0a98", "params": ["af85028de1f19747fc33e59b4e89d989", "network.info", "radio_state", {}] }, { "jsonrpc": "2.0", "method": "call", "id": "623846f4-10fe-44df-8a18-b06bcf74e471", "params": ["af85028de1f19747fc33e59b4e89d989", "iwinfo", "devices", {}] }, { "jsonrpc": "2.0", "method": "call", "id": "c67c5077-6f05-4ddb-a8f9-8bf29d5e5e1e", "params": ["af85028de1f19747fc33e59b4e89d989", "uci", "get", { "config": "wireless", "type": "wifi-iface", "match": { "mode": "ap" } }] }, { "jsonrpc": "2.0", "method": "call", "id": "cd762b7a-a964-4c9e-9746-4be7854665ff", "params": ["af85028de1f19747fc33e59b4e89d989", "uci", "get", { "config": "wireless", "type": "wifi-iface", "match": { "mode": "sta" } }] }, { "jsonrpc": "2.0", "method": "call", "id": "a316e989-bed0-4c8d-9774-8957b2b0db2c", "params": ["af85028de1f19747fc33e59b4e89d989", "uci", "get", { "config": "vlan", "type": "vlan" }] }, { "jsonrpc": "2.0", "method": "call", "id": "3c40b73a-c8cf-48f0-9df7-fd87edab042b", "params": ["af85028de1f19747fc33e59b4e89d989", "uci", "get", { "config": "wireless", "type": "wifi-device" }] }]
 
 network_info_radio_state_response = [
     {
@@ -3900,7 +3903,7 @@ network_info_radio_state_response = [
     }
 ]
 
-network_ghntool_ghninfo_request = [{"jsonrpc":"2.0","method":"call","id":"74be9467-ffe7-4043-a808-05b15390ac3d","params":["af85028de1f19747fc33e59b4e89d989","network.ghntool","ghninfo",{}]},{"jsonrpc":"2.0","method":"call","id":"ce3fa97e-9afb-447f-9e5f-3ad00b09fe0e","params":["af85028de1f19747fc33e59b4e89d989","network.ghntool","get_settings",{}]}]
+network_ghntool_ghninfo_request = [{ "jsonrpc": "2.0", "method": "call", "id": "74be9467-ffe7-4043-a808-05b15390ac3d", "params": ["af85028de1f19747fc33e59b4e89d989", "network.ghntool", "ghninfo", {}] }, { "jsonrpc": "2.0", "method": "call", "id": "ce3fa97e-9afb-447f-9e5f-3ad00b09fe0e", "params": ["af85028de1f19747fc33e59b4e89d989", "network.ghntool", "get_settings", {}] }]
 
 network_ghntool_ghninfo_response = [
     {
@@ -3957,7 +3960,7 @@ network_ghntool_ghninfo_response = [
     }
 ]
 
-network_swconfig_list_request = {"jsonrpc":"2.0","method":"call","id":"3e8dc165-0584-4dbf-bf90-3834634ed977","params":["af85028de1f19747fc33e59b4e89d989","network.swconfig","list",{}]}
+network_swconfig_list_request = { "jsonrpc": "2.0", "method": "call", "id": "3e8dc165-0584-4dbf-bf90-3834634ed977", "params": ["af85028de1f19747fc33e59b4e89d989", "network.swconfig", "list", {}] }
 
 network_swconfig_list_response = {
     "jsonrpc": "2.0",
@@ -3972,7 +3975,7 @@ network_swconfig_list_response = {
     ]
 }
 
-network_swconfig_status_request = [{"jsonrpc":"2.0","method":"call","id":"4fe29f3f-e07c-489d-92fe-efaf90a92382","params":["af85028de1f19747fc33e59b4e89d989","network.swconfig","status",{"switch":"QCA DESS"}]}]
+network_swconfig_status_request = [{ "jsonrpc": "2.0", "method": "call", "id": "4fe29f3f-e07c-489d-92fe-efaf90a92382", "params": ["af85028de1f19747fc33e59b4e89d989", "network.swconfig", "status", { "switch": "QCA DESS" }] }]
 
 network_swconfig_status_response = [
     {
@@ -4036,7 +4039,7 @@ network_swconfig_status_response = [
     }
 ]
 
-network_info_clients_request = [{"jsonrpc":"2.0","method":"call","id":"c65f16ca-f5a2-4b38-87fa-217b7a647b50","params":["af85028de1f19747fc33e59b4e89d989","network.info","clients",{"device":"ath0"}]},{"jsonrpc":"2.0","method":"call","id":"efd39750-007a-47da-bd3c-b358e99d3d31","params":["af85028de1f19747fc33e59b4e89d989","network.info","clients",{"device":"ath1"}]}]
+network_info_clients_request = [{ "jsonrpc": "2.0", "method": "call", "id": "c65f16ca-f5a2-4b38-87fa-217b7a647b50", "params": ["af85028de1f19747fc33e59b4e89d989", "network.info", "clients", { "device": "ath0" }] }, { "jsonrpc": "2.0", "method": "call", "id": "efd39750-007a-47da-bd3c-b358e99d3d31", "params": ["af85028de1f19747fc33e59b4e89d989", "network.info", "clients", { "device": "ath1" }] }]
 
 network_info_clients_response = [
     {
@@ -4142,7 +4145,7 @@ network_info_clients_response = [
     }
 ]
 
-iwinfo_info_request = {"jsonrpc":"2.0","method":"call","id":"3db0def7-3823-45e3-97cd-0970439a4361","params":["af85028de1f19747fc33e59b4e89d989","iwinfo","info",{"device":"ath0"}]}
+iwinfo_info_request = { "jsonrpc": "2.0", "method": "call", "id": "3db0def7-3823-45e3-97cd-0970439a4361", "params": ["af85028de1f19747fc33e59b4e89d989", "iwinfo", "info", { "device": "ath0" }] }
 
 iwinfo_info_response = {
     "jsonrpc": "2.0",
@@ -4186,7 +4189,7 @@ iwinfo_info_response = {
     ]
 }
 
-iwinfo_info_request = {"jsonrpc":"2.0","method":"call","id":"5373e2f9-7437-45f2-8e23-96937ac8d710","params":["af85028de1f19747fc33e59b4e89d989","iwinfo","info",{"device":"ath1"}]}
+iwinfo_info_request = { "jsonrpc": "2.0", "method": "call", "id": "5373e2f9-7437-45f2-8e23-96937ac8d710", "params": ["af85028de1f19747fc33e59b4e89d989", "iwinfo", "info", { "device": "ath1" }] }
 
 iwinfo_info_response = {
     "jsonrpc": "2.0",
@@ -4230,7 +4233,7 @@ iwinfo_info_response = {
     ]
 }
 
-system_info_request = {"jsonrpc":"2.0","method":"call","id":"3360d122-0dd0-442f-8ab2-9f63b82d08c7","params":["af85028de1f19747fc33e59b4e89d989","system","info",{}]}
+system_info_request = { "jsonrpc": "2.0", "method": "call", "id": "3360d122-0dd0-442f-8ab2-9f63b82d08c7", "params": ["af85028de1f19747fc33e59b4e89d989", "system", "info", {}] }
 
 system_info_response = {
     "jsonrpc": "2.0",
@@ -4259,7 +4262,7 @@ system_info_response = {
     ]
 }
 
-network_info_radio_state_request = [{"jsonrpc":"2.0","method":"call","id":"0138dd35-b364-432a-aa36-faf8731a1a82","params":["af85028de1f19747fc33e59b4e89d989","network.info","radio_state",{}]},{"jsonrpc":"2.0","method":"call","id":"e4858308-c213-4361-8034-0badbfe99057","params":["af85028de1f19747fc33e59b4e89d989","iwinfo","devices",{}]},{"jsonrpc":"2.0","method":"call","id":"73f389b8-4388-44e0-8a82-d47a63855635","params":["af85028de1f19747fc33e59b4e89d989","uci","get",{"config":"wireless","type":"wifi-iface","match":{"mode":"ap"}}]},{"jsonrpc":"2.0","method":"call","id":"50dce72b-df37-495a-a1e0-6d674facc57a","params":["af85028de1f19747fc33e59b4e89d989","uci","get",{"config":"wireless","type":"wifi-iface","match":{"mode":"sta"}}]},{"jsonrpc":"2.0","method":"call","id":"8f222eca-3a36-4f72-8cb2-bbbfc3b0a35b","params":["af85028de1f19747fc33e59b4e89d989","uci","get",{"config":"vlan","type":"vlan"}]},{"jsonrpc":"2.0","method":"call","id":"035c0803-e257-4644-8b60-1dbb00204667","params":["af85028de1f19747fc33e59b4e89d989","uci","get",{"config":"wireless","type":"wifi-device"}]}]
+network_info_radio_state_request = [{ "jsonrpc": "2.0", "method": "call", "id": "0138dd35-b364-432a-aa36-faf8731a1a82", "params": ["af85028de1f19747fc33e59b4e89d989", "network.info", "radio_state", {}] }, { "jsonrpc": "2.0", "method": "call", "id": "e4858308-c213-4361-8034-0badbfe99057", "params": ["af85028de1f19747fc33e59b4e89d989", "iwinfo", "devices", {}] }, { "jsonrpc": "2.0", "method": "call", "id": "73f389b8-4388-44e0-8a82-d47a63855635", "params": ["af85028de1f19747fc33e59b4e89d989", "uci", "get", { "config": "wireless", "type": "wifi-iface", "match": { "mode": "ap" } }] }, { "jsonrpc": "2.0", "method": "call", "id": "50dce72b-df37-495a-a1e0-6d674facc57a", "params": ["af85028de1f19747fc33e59b4e89d989", "uci", "get", { "config": "wireless", "type": "wifi-iface", "match": { "mode": "sta" } }] }, { "jsonrpc": "2.0", "method": "call", "id": "8f222eca-3a36-4f72-8cb2-bbbfc3b0a35b", "params": ["af85028de1f19747fc33e59b4e89d989", "uci", "get", { "config": "vlan", "type": "vlan" }] }, { "jsonrpc": "2.0", "method": "call", "id": "035c0803-e257-4644-8b60-1dbb00204667", "params": ["af85028de1f19747fc33e59b4e89d989", "uci", "get", { "config": "wireless", "type": "wifi-device" }] }]
 
 network_info_radio_state_response = [
     {
@@ -4579,10 +4582,10 @@ network_info_radio_state_response = [
 ]
 
 system_info_request = {
-    "jsonrpc":"2.0",
-    "method":"call",
-    "id":"5029fdc1-f8db-4987-9d1c-bd55f672fe5e",
-    "params":[
+    "jsonrpc": "2.0",
+    "method": "call",
+    "id": "5029fdc1-f8db-4987-9d1c-bd55f672fe5e",
+    "params": [
         "8f99c3a2c17b39011d75fff3c3644296",
         "system",
         "info",
@@ -4618,14 +4621,14 @@ system_info_response = {
 }
 
 iwinfo_info_request = {
-    "jsonrpc":"2.0",
-    "method":"call",
-    "id":"3982e02f-286b-4e7f-b7ca-b81fb1ae56a1",
-    "params":[
+    "jsonrpc": "2.0",
+    "method": "call",
+    "id": "3982e02f-286b-4e7f-b7ca-b81fb1ae56a1",
+    "params": [
         "8f99c3a2c17b39011d75fff3c3644296",
         "iwinfo",
         "info",
-        {"device":"ath1"}
+        { "device": "ath1" }
     ]
 }
 
@@ -4673,10 +4676,10 @@ iwinfo_info_response = {
 
 
 session_refresh_request = {
-    "jsonrpc":"2.0",
-    "method":"call",
-    "id":"0940a882-06f8-4510-91ef-45efbdfec280",
-    "params":[
+    "jsonrpc": "2.0",
+    "method": "call",
+    "id": "0940a882-06f8-4510-91ef-45efbdfec280",
+    "params": [
         "8f99c3a2c17b39011d75fff3c3644296",
         "session",
         "refresh",
@@ -4685,7 +4688,7 @@ session_refresh_request = {
 }
 
 session_refresh_response = {
-    "jsonrpc":"2.0",
-    "id":"0940a882-06f8-4510-91ef-45efbdfec280",
-    "result":[0]
+    "jsonrpc": "2.0",
+    "id": "0940a882-06f8-4510-91ef-45efbdfec280",
+    "result": [0]
 }
