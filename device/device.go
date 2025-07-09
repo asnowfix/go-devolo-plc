@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"github.com/asnowfix/go-devolo-plc/deviceapi"
+	"github.com/asnowfix/go-devolo-plc/internal/logger"
 	"github.com/asnowfix/go-devolo-plc/plcnetapi"
 	"github.com/grandcat/zeroconf"
 )
@@ -79,31 +80,49 @@ func New(ip string) (*Device, error) {
 
 // Connect establishes a connection to the device
 func (d *Device) Connect(ctx context.Context) error {
+	// Create a logger and add it to the context
+	deviceLogger := logger.NewSimpleLogger(logger.LevelInfo)
+	ctx = logger.WithLogger(ctx, deviceLogger)
+	
+	log := logger.FromContext(ctx)
+	log.Info("Connecting to device at %s", d.IP)
+	
 	if d.connected {
+		log.Info("Device %s is already connected", d.IP)
 		return nil
 	}
 
 	// Get device information via mDNS
+	log.Debug("Getting device information via mDNS for %s", d.IP)
 	if err := d.getZeroconfInfo(ctx); err != nil {
+		log.Warn("Failed to get device information via unicast for %s: %v", d.IP, err)
 		// Retry with multicast if unicast fails
 		if err := d.retryZeroconfInfo(ctx); err != nil {
+			log.Error("Failed to get device information via multicast for %s: %v", d.IP, err)
 			return fmt.Errorf("failed to get device information: %w", err)
 		}
 	}
 
 	// Get device info from the device API
+	log.Debug("Getting device info from the device API for %s", d.IP)
 	if err := d.getDeviceInfo(); err != nil {
+		log.Error("Failed to get device info for %s: %v", d.IP, err)
 		return fmt.Errorf("failed to get device info: %w", err)
 	}
 
 	// Get PLC network info if supported by the device
 	if !d.isDeviceWithoutPlcNet() {
+		log.Debug("Getting PLC network info for %s", d.IP)
 		if err := d.getPlcNetInfo(); err != nil {
+			log.Error("Failed to get PLC network info for %s: %v", d.IP, err)
 			return fmt.Errorf("failed to get PLC network info: %w", err)
 		}
+	} else {
+		log.Info("Device %s does not support PLC network", d.IP)
 	}
 
 	d.connected = true
+	log.Info("Successfully connected to device %s", d.IP)
 	return nil
 }
 
@@ -249,21 +268,28 @@ func (d *Device) getPlcNetInfo() error {
 
 // getZeroconfInfo browses for the desired mDNS service types and queries them
 func (d *Device) getZeroconfInfo(ctx context.Context) error {
+	log := logger.FromContext(ctx)
 	serviceTypes := []string{ServiceTypeDeviceAPI, ServiceTypePlcNetAPI}
 
+	log.Debug("Starting mDNS discovery for device %s", d.IP)
 	resolver, err := zeroconf.NewResolver(nil)
 	if err != nil {
+		log.Error("Failed to create mDNS resolver: %v", err)
 		return fmt.Errorf("failed to create resolver: %w", err)
 	}
 
 	entries := make(chan *zeroconf.ServiceEntry)
 
 	// Start listening for responses
+	log.Debug("Browsing for service type: %s", serviceTypes[0])
 	if err := resolver.Browse(ctx, serviceTypes[0], "local.", entries); err != nil {
+		log.Error("Failed to browse for %s: %v", serviceTypes[0], err)
 		return fmt.Errorf("failed to browse: %w", err)
 	}
 
+	log.Debug("Browsing for service type: %s", serviceTypes[1])
 	if err := resolver.Browse(ctx, serviceTypes[1], "local.", entries); err != nil {
+		log.Error("Failed to browse for %s: %v", serviceTypes[1], err)
 		return fmt.Errorf("failed to browse: %w", err)
 	}
 
@@ -271,29 +297,36 @@ func (d *Device) getZeroconfInfo(ctx context.Context) error {
 	timer := time.NewTimer(time.Duration(MDNSTimeout) * time.Millisecond)
 	defer timer.Stop()
 
+	log.Debug("Waiting for mDNS responses with timeout of %d ms", MDNSTimeout)
 	for {
 		select {
 		case entry := <-entries:
+			log.Debug("Received mDNS entry: %s from %v", entry.Service, entry.AddrIPv4)
 			// Check if this entry matches our device IP
 			for _, addr := range entry.AddrIPv4 {
 				if addr.String() == d.IP {
-					d.processServiceEntry(entry)
+					log.Info("Found matching service entry for device %s: %s", d.IP, entry.Service)
+					d.processServiceEntry(ctx, entry)
 				}
 			}
 
 			// Check if we have all the information we need
 			if d.hasRequiredInfo() {
+				log.Info("All required device information collected for %s", d.IP)
 				return nil
 			}
 
 		case <-timer.C:
 			// Timeout reached
 			if d.hasRequiredInfo() {
+				log.Info("Timeout reached but all required information collected for %s", d.IP)
 				return nil
 			}
+			log.Error("Timeout waiting for mDNS responses for device %s", d.IP)
 			return fmt.Errorf("timeout waiting for mDNS responses")
 
 		case <-ctx.Done():
+			log.Warn("Context cancelled while waiting for mDNS responses: %v", ctx.Err())
 			return ctx.Err()
 		}
 	}
@@ -301,18 +334,23 @@ func (d *Device) getZeroconfInfo(ctx context.Context) error {
 
 // retryZeroconfInfo retries getting the zeroconf info using multicast
 func (d *Device) retryZeroconfInfo(ctx context.Context) error {
-	d.logger.Println("Having trouble getting results via unicast messages. Switching to multicast for this device.")
+	log := logger.FromContext(ctx)
+	log.Warn("Having trouble getting results via unicast messages. Switching to multicast for device %s", d.IP)
 	return d.getZeroconfInfo(ctx)
 }
 
 // processServiceEntry processes a service entry from mDNS
-func (d *Device) processServiceEntry(entry *zeroconf.ServiceEntry) {
+func (d *Device) processServiceEntry(ctx context.Context, entry *zeroconf.ServiceEntry) {
+	log := logger.FromContext(ctx)
 	serviceType := ""
 	if strings.Contains(entry.Service, ServiceTypeDeviceAPI) {
 		serviceType = ServiceTypeDeviceAPI
+		log.Debug("Processing DeviceAPI service entry for %s", d.IP)
 	} else if strings.Contains(entry.Service, ServiceTypePlcNetAPI) {
 		serviceType = ServiceTypePlcNetAPI
+		log.Debug("Processing PlcNetAPI service entry for %s", d.IP)
 	} else {
+		log.Warn("Unknown service type in entry: %s", entry.Service)
 		return
 	}
 
@@ -322,15 +360,19 @@ func (d *Device) processServiceEntry(entry *zeroconf.ServiceEntry) {
 		Properties: make(map[string]string),
 	}
 
+	log.Debug("Service info for %s: hostname=%s, port=%d", serviceType, entry.HostName, entry.Port)
+
 	// Parse TXT records
 	for _, txt := range entry.Text {
 		parts := strings.SplitN(txt, "=", 2)
 		if len(parts) == 2 {
 			info.Properties[parts[0]] = parts[1]
+			log.Debug("Found property: %s=%s", parts[0], parts[1])
 		}
 	}
 
 	d.info[serviceType] = info
+	log.Info("Stored service info for %s with %d properties", serviceType, len(info.Properties))
 }
 
 // hasRequiredInfo checks if we have all the required information
