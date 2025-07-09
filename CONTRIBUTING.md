@@ -40,6 +40,7 @@ The Go implementation of the devolo PLC API is structured as follows:
 4. **Errors Package**: Custom error types for handling specific error conditions.
 5. **Zeroconf Package**: Utilities for mDNS service discovery.
 6. **Proto Package**: Contains Protocol Buffer definitions and generated Go code.
+7. **JSON-RPC Package**: Implements a JSON-RPC 2.0 client for interacting with the devolo PLC API using the JSON-RPC protocol.
 
 ### Key Features Implemented
 - Device discovery via mDNS
@@ -143,6 +144,17 @@ The errors package provides custom error types for handling specific error condi
 
 ### Zeroconf Package
 The zeroconf package provides utilities for mDNS service discovery, which is used to discover devolo PLC devices on the network.
+
+### JSON-RPC Package
+The jsonrpc package provides a parser for JSON-RPC 2.0 requests and responses used by the devolo PLC API. It includes:
+
+1. **Core JSON-RPC Client**: A complete JSON-RPC 2.0 client implementation supporting both string and number IDs, single and batch requests, error handling, and response parsing.
+
+2. **Devolo PLC API Models**: Structured types for request/response data including login, system info, wireless info, device name, and UCI configuration.
+
+3. **Devolo Client Implementation**: A high-level client specifically for the devolo PLC API with methods for common operations like login, session management, and retrieving device information.
+
+The implementation handles the specific JSON-RPC format used by the devolo PLC API, where responses typically follow the pattern `[status_code, data]`, and manages session tokens automatically after login.
 
 ## Adding New Features
 
