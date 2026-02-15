@@ -43,6 +43,10 @@ jobs:
                   "$proto_file"
           done
 
+      - id: go-generate
+        name: Run go generate
+        run: go generate ./...
+
       - name: Run golangci-lint
         uses: golangci/golangci-lint-action@v8
         with:

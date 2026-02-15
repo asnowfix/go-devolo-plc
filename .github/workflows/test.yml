@@ -43,6 +43,10 @@ jobs:
                   "$proto_file"
           done
           
+      - id: go-generate
+        name: Run go generate
+        run: go generate ./...
+
       - name: Run tests
         run: go test -v -race -coverprofile=coverage.txt -covermode=atomic ./...
 
@@ -87,6 +91,10 @@ jobs:
                   --go-grpc_out=. --go-grpc_opt=paths=source_relative \
                   "$proto_file"
           done
+
+      - id: go-generate
+        name: Run go generate
+        run: go generate ./...
 
       - name: Build
         run: go build -v ./...

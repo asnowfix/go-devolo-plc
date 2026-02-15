@@ -47,6 +47,10 @@ jobs:
                   "$proto_file"
           done
 
+      - id: go-generate
+        name: Run go generate
+        run: go generate ./...
+
       - name: Verify generated files
         run: |
           if [ -n "$(git status --porcelain)" ]; then

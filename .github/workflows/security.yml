@@ -51,6 +51,10 @@ jobs:
                   "$proto_file"
           done
       
+      - id: go-generate
+        name: Run go generate
+        run: go generate ./...
+
       - name: Run Gosec Security Scanner
         uses: securego/gosec@master
         with:
